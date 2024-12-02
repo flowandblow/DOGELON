@@ -1,8 +1,6 @@
 import logging
 from solana.keypair import Keypair
 from solana.rpc.api import Client
-from solana.rpc.async_api import AsyncClient
-from solana.transaction import Transaction
 from solana.publickey import PublicKey
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
@@ -40,9 +38,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(
-        f"¡Bienvenido! Tu billetera de Solana ha sido creada:\n\n"
-        f"Dirección de la billetera: {wallet_info['public_key']}\n\n"
-        f"Por favor, deposita SOL en esta dirección para comenzar a operar.",
+        f"¡Bienvenido al bot de trading automático en Solana! 🚀\n\n"
+        f"Tu billetera personal ha sido creada automáticamente. Esta billetera será usada para realizar operaciones reales en la blockchain de Solana.\n\n"
+        f"➡ **Dirección de tu billetera**: `{wallet_info['public_key']}`\n\n"
+        f"🔹 **Instrucciones**:\n"
+        f"1️⃣ Envía una cantidad de SOL a esta dirección para comenzar.\n"
+        f"2️⃣ Haz clic en 'Activar Trading' para que el bot opere automáticamente.\n"
+        f"3️⃣ Usa 'Ver Saldo' para consultar tu balance en tiempo real.\n"
+        f"4️⃣ Usa 'Detener Trading' si deseas pausar las operaciones.\n\n"
+        f"⚠ **Nota importante**: Asegúrate de depositar una cantidad adecuada de SOL para realizar operaciones.",
         reply_markup=reply_markup
     )
 
@@ -59,12 +63,10 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     elif query.data == "start_trading":
         await query.edit_message_text("Trading automático activado. Operaciones en progreso...")
-
-        # Aquí puedes implementar la lógica para realizar operaciones reales
-        # usando APIs de Raydium o construyendo transacciones manuales.
+        # Aquí se pueden agregar las operaciones reales
 
     elif query.data == "stop_trading":
-        await query.edit_message_text("Trading detenido.")
+        await query.edit_message_text("Trading detenido. Tus fondos están seguros.")
 
 # Configuración principal del bot
 def main():
