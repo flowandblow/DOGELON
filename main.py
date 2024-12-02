@@ -1,17 +1,9 @@
-import random
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
-# Lista de tokens predefinidos
-TOKENS = [
-    "TOKEN_1_AQUI",
-    "TOKEN_2_AQUI",
-    "TOKEN_3_AQUI"
-]
-
-# Seleccionar un token aleatorio al iniciar
-TELEGRAM_TOKEN = random.choice(TOKENS)
+# Token único del bot (proporcionado por BotFather)
+TELEGRAM_TOKEN = "7739156128:AAE7Xhg87x7xWtlmsjXZuTP2A8VlWnlrxlc"
 
 # Configuración de logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
