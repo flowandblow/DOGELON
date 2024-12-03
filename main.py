@@ -70,7 +70,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Configuración principal del bot
 def main():
-    application = ApplicationBuilder().token("TU_TOKEN_DE_BOT_AQUI").build()
+    application = ApplicationBuilder().token("7739156128:AAE7Xhg87x7xWtlmsjXZuTP2A8VlWnlrxlc").build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button_handler))
